@@ -94,7 +94,7 @@ button {
 }
 
 .site-main {
-  padding-top: 2.5rem;
+  padding-top: 0;
   padding-bottom: 2.5rem;
 }
 
@@ -631,7 +631,7 @@ button {
 
 @media (max-width: 768px) {
   .site-main {
-    padding-top: 2rem;
+    padding-top: 0;
   }
 
   .article-grid,
