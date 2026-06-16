@@ -83,16 +83,18 @@
 
 .featured-story .feature-image {
   position: relative;
-  min-height: 100%;
+  min-height: 0;
   aspect-ratio: 5 / 4;
   overflow: hidden;
   background: #e8e3d6;
+  align-self: stretch;
 }
 
 .featured-story img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: transform 700ms ease;
 }
 
@@ -171,6 +173,11 @@
   border-top: 1px solid rgba(26, 47, 35, 0.1);
   padding-top: 0.65rem;
   min-width: 0;
+}
+
+.feature-footer .author-chip img {
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
 .featured-story-empty {
@@ -446,6 +453,11 @@
 
   .feature-footer .author-chip {
     width: 100%;
+  }
+
+  .feature-footer .author-chip img {
+    width: 2rem;
+    height: 2rem;
   }
 
   .feature-footer .btn {
