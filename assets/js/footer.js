@@ -38,7 +38,7 @@
           <div class="footer-col">
             <h3>Tip Line &amp; Contacts</h3>
             <p>Secure Tip Line:</p>
-            <a href="mailto:tips@climatelens.org">tips@climatelens.org</a>
+            <a href="mailto:zubairghilzai10@gmail.com">zubairghilzai10@gmail.com</a>
             <p>Available 24/7 for researchers, scientists &amp; whistleblowers.</p>
           </div>
         </div>
