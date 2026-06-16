@@ -191,29 +191,20 @@
         const message = form.parentElement?.querySelector("[data-newsletter-message]");
         const email = input ? input.value.trim() : "";
         if (!message) return;
-        message.textContent = "Saving your subscription...";
-        fetch("/api/subscribe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            email,
-            source: "website",
-            page: document.body.dataset.page || "site"
-          })
-        })
-          .then(async (response) => {
-            const data = await response.json().catch(() => ({}));
-            if (!response.ok) {
-              throw new Error(data.error || "Could not save your subscription.");
-            }
-            if (input) input.value = "";
-            message.textContent = "Thanks — your email has been saved.";
-          })
-          .catch((error) => {
-            message.textContent = error.message || "Something went wrong. Please try again.";
-          });
+        try {
+          const storageKey = "climate-lens-newsletter";
+          const current = JSON.parse(localStorage.getItem(storageKey) || "[]");
+          const normalized = email.toLowerCase();
+          if (!normalized || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) {
+            throw new Error("Please enter a valid email address.");
+          }
+          if (!current.includes(normalized)) current.push(normalized);
+          localStorage.setItem(storageKey, JSON.stringify(current));
+          if (input) input.value = "";
+          message.textContent = "Thanks — your email is saved on this browser.";
+        } catch (error) {
+          message.textContent = error.message || "Something went wrong. Please try again.";
+        }
       }, { once: true });
     });
   }
