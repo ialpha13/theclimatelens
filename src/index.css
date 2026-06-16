@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Climate Lens - Artistic Flair Theme Colors */
+  --color-forest: #1A2F23;
+  --color-forest-light: #2A4435;
+  --color-sage: #7C8C7F;
+  --color-sage-light: #9EADA1;
+  --color-earth-beige: #F9F8F3;
+  --color-earth-dark: #D6D0C2;
+  --color-charcoal: #121212;
+  --color-gold: #c59b27;
+  --color-muted-teal: #3b6f75;
+}
+
+/* Custom global styles to enhance editorial feel */
+html, body {
+  background-color: var(--color-earth-beige);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(94, 119, 106, 0.2);
+  color: var(--color-forest);
+}
+
+/* Print and utility rules for editorial look */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* Highlighting headings and elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Beautiful custom scrollbars matching sage palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-earth-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sage);
+}
+
