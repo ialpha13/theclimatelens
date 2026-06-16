@@ -76,8 +76,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map((video) => ui.renderVideoCard(video))
       .join("");
 
-    ui.renderNewsletter("#home-newsletter");
-    ui.setupNewsletter();
     ui.setupVideoCards(document);
   } catch (error) {
     ui.renderStatus("#featured-story-slot", "error", "Featured report could not load.");

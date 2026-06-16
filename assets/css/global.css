@@ -23,16 +23,31 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--earth-beige);
+  background: #eef0ea;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background: var(--earth-beige);
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(249, 248, 243, 0.95)),
+    url("../images/homehero.png") center top / cover no-repeat fixed;
   color: var(--charcoal);
   font-family: var(--font-sans);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at top left, rgba(26, 47, 35, 0.08), transparent 36%),
+    radial-gradient(circle at top right, rgba(197, 155, 39, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(249, 248, 243, 0.55), rgba(249, 248, 243, 0.9));
+  pointer-events: none;
 }
 
 body.menu-open {
@@ -106,6 +121,12 @@ button {
 .section-block {
   display: grid;
   gap: 1.5rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(26, 47, 35, 0.08);
+  border-radius: 0.9rem;
+  background: rgba(253, 252, 251, 0.78);
+  box-shadow: 0 12px 30px rgba(18, 40, 30, 0.05);
+  backdrop-filter: blur(8px);
 }
 
 .section-header {
@@ -242,7 +263,7 @@ button {
   overflow: hidden;
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.5rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
   transition: border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
 }
 
@@ -421,7 +442,7 @@ button {
   overflow: hidden;
   border: 1px solid rgba(124, 140, 127, 0.2);
   border-radius: 0.75rem;
-  background: #12281e;
+  background: rgba(18, 40, 30, 0.94);
   color: var(--earth-beige);
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(18, 40, 30, 0.18);
@@ -560,7 +581,7 @@ body[data-page="home"] .article-media img,
 .error-state {
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.75rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
   padding: 3rem 1.5rem;
   color: var(--sage);
   text-align: center;
@@ -571,64 +592,6 @@ body[data-page="home"] .article-media img,
   margin: 0 0 0.5rem;
   color: var(--forest);
   font-family: var(--font-serif);
-}
-
-.newsletter {
-  border: 1px solid rgba(124, 140, 127, 0.2);
-  border-radius: 0.75rem;
-  background: var(--forest);
-  color: var(--earth-beige);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.newsletter span {
-  color: var(--gold);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.newsletter h2 {
-  margin: 0.35rem 0;
-  color: white;
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-}
-
-.newsletter p {
-  margin: 0;
-  color: #cac4b7;
-  font-size: 0.85rem;
-  line-height: 1.65;
-}
-
-.newsletter form {
-  display: flex;
-  min-width: min(100%, 24rem);
-  gap: 0.5rem;
-}
-
-.newsletter input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid rgba(124, 140, 127, 0.3);
-  border-radius: 0.35rem;
-  background: #112a1d;
-  color: white;
-  padding: 0.8rem 1rem;
-}
-
-.newsletter-message {
-  margin: 0;
-  color: var(--gold);
-  font-size: 0.78rem;
-  line-height: 1.5;
 }
 
 .fade-in {
@@ -644,10 +607,6 @@ body[data-page="home"] .article-media img,
   .article-grid,
   .video-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .newsletter {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -665,9 +624,5 @@ body[data-page="home"] .article-media img,
   .article-card.list {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  .newsletter form {
-    flex-direction: column;
   }
 }

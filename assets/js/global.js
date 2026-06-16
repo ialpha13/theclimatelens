@@ -127,25 +127,6 @@
     return html;
   }
 
-  function renderNewsletter(target) {
-    const node = typeof target === "string" ? document.querySelector(target) : target;
-    if (!node) return;
-    node.innerHTML = `
-      <div class="newsletter">
-        <div>
-          <span>Newsroom Dispatch</span>
-          <h2>Get evidence-based climate stories in your inbox.</h2>
-          <p>Monthly field notes, investigations, explainers, and climate signals. No ads, no sponsor pressure.</p>
-        </div>
-        <form data-newsletter-form>
-          <input type="email" required placeholder="you@example.com" aria-label="Email address">
-          <button class="btn btn-gold" type="submit">Subscribe</button>
-        </form>
-        <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
-      </div>
-    `;
-  }
-
   function renderStatus(target, type, message) {
     const node = typeof target === "string" ? document.querySelector(target) : target;
     if (!node) return;
@@ -183,34 +164,7 @@
     });
   }
 
-  function setupNewsletter() {
-    document.querySelectorAll("[data-newsletter-form]").forEach((form) => {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const input = form.querySelector("input");
-        const message = form.parentElement?.querySelector("[data-newsletter-message]");
-        const email = input ? input.value.trim() : "";
-        if (!message) return;
-        try {
-          const storageKey = "climate-lens-newsletter";
-          const current = JSON.parse(localStorage.getItem(storageKey) || "[]");
-          const normalized = email.toLowerCase();
-          if (!normalized || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) {
-            throw new Error("Please enter a valid email address.");
-          }
-          if (!current.includes(normalized)) current.push(normalized);
-          localStorage.setItem(storageKey, JSON.stringify(current));
-          if (input) input.value = "";
-          message.textContent = "Thanks — your email is saved on this browser.";
-        } catch (error) {
-          message.textContent = error.message || "Something went wrong. Please try again.";
-        }
-      }, { once: true });
-    });
-  }
-
-  function setupGlobalInteractions() {
-  }
+  function setupGlobalInteractions() {}
 
   document.addEventListener("DOMContentLoaded", () => {
     setupGlobalInteractions();
@@ -224,9 +178,7 @@
     renderArticleCard,
     renderVideoCard,
     markdownToHtml,
-    renderNewsletter,
     renderStatus,
-    setupVideoCards,
-    setupNewsletter
+    setupVideoCards
   };
 })();

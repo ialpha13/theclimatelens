@@ -81,10 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <h2>Related Investigations</h2>
         <div class="article-grid">${related.map((item) => ui.renderArticleCard(item, authors)).join("")}</div>
       </section>
-      <section id="article-newsletter"></section>
     `;
-    ui.renderNewsletter("#article-newsletter");
-    ui.setupNewsletter();
     target.querySelector("[data-copy]").addEventListener("click", () => navigator.clipboard.writeText(window.location.href));
     target.querySelector("[data-like]").addEventListener("click", (event) => event.currentTarget.classList.toggle("active"));
     target.querySelector("[data-bookmark]").addEventListener("click", (event) => event.currentTarget.classList.toggle("active"));
