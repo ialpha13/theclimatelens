@@ -1,5 +1,5 @@
 (function () {
-  const SANITY_PROJECT_ID = "YOUR_SANITY_PROJECT_ID";
+  const SANITY_PROJECT_ID = "5ygxll5t";
   const SANITY_DATASET = "production";
   const SANITY_API_VERSION = "2025-06-01";
   const USE_CDN = true;

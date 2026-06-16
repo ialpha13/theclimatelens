@@ -1,6 +1,6 @@
 export default {
   api: {
-    projectId: 'YOUR_SANITY_PROJECT_ID',
+    projectId: '5ygxll5t',
     dataset: 'production',
   },
 };

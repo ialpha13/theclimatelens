@@ -35,7 +35,7 @@ Then open the local URL shown by the server.
 
 1. Create a Sanity project.
 2. Open `assets/js/sanityClient.js`.
-3. Replace `YOUR_SANITY_PROJECT_ID` with your Sanity project ID.
+3. The repo is already configured for Sanity project ID `5ygxll5t`.
 4. Keep `SANITY_DATASET` as `production` unless your dataset has another name.
 5. In Sanity Manage, add CORS origins for your local URL and Vercel domain.
 

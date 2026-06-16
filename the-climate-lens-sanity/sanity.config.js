@@ -6,7 +6,7 @@ import { schemaTypes } from './schemaTypes/index.js';
 export default defineConfig({
   name: 'the-climate-lens',
   title: 'The Climate Lens',
-  projectId: 'YOUR_SANITY_PROJECT_ID',
+  projectId: '5ygxll5t',
   dataset: 'production',
   plugins: [structureTool(), visionTool()],
   schema: {
