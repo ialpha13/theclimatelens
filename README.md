@@ -64,6 +64,14 @@ Use:
 
 The included `vercel.json` is configured for static hosting.
 
+## SEO And Security
+
+- `sitemap.xml` lists the public site pages for crawlers.
+- `robots.txt` points search engines to the sitemap.
+- `vercel.json` adds basic security headers.
+- Keep real secret values out of GitHub. Use `.env.local` for local work and Vercel environment variables for deployments.
+- Only `.env.example` is tracked here as a template.
+
 ## Sanity Studio
 
 The Studio is in `the-climate-lens-sanity/`.
