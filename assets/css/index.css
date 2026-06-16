@@ -65,7 +65,7 @@
 
 .featured-story {
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: 6fr 6fr;
   overflow: hidden;
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.625rem;
@@ -84,7 +84,7 @@
 .featured-story .feature-image {
   position: relative;
   min-height: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 5 / 4;
   overflow: hidden;
   background: #e8e3d6;
 }
@@ -401,8 +401,8 @@
   }
 
   .featured-story .feature-image {
-    aspect-ratio: 16 / 9;
-    min-height: 14rem;
+    aspect-ratio: 16 / 10;
+    min-height: 12rem;
   }
 
   .featured-story {
