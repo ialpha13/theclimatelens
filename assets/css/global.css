@@ -624,6 +624,13 @@ body[data-page="home"] .article-media img,
   padding: 0.8rem 1rem;
 }
 
+.newsletter-message {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .fade-in {
   animation: fadeIn 500ms ease both;
 }

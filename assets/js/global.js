@@ -141,6 +141,7 @@
           <input type="email" required placeholder="you@example.com" aria-label="Email address">
           <button class="btn btn-gold" type="submit">Subscribe</button>
         </form>
+        <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
       </div>
     `;
   }
@@ -187,8 +188,32 @@
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const input = form.querySelector("input");
-        if (input) input.value = "";
-        form.insertAdjacentHTML("afterend", '<p class="success-message">You are on the Climate Lens dispatch list for this session.</p>');
+        const message = form.parentElement?.querySelector("[data-newsletter-message]");
+        const email = input ? input.value.trim() : "";
+        if (!message) return;
+        message.textContent = "Saving your subscription...";
+        fetch("/api/subscribe", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email,
+            source: "website",
+            page: document.body.dataset.page || "site"
+          })
+        })
+          .then(async (response) => {
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              throw new Error(data.error || "Could not save your subscription.");
+            }
+            if (input) input.value = "";
+            message.textContent = "Thanks — your email has been saved.";
+          })
+          .catch((error) => {
+            message.textContent = error.message || "Something went wrong. Please try again.";
+          });
       }, { once: true });
     });
   }
