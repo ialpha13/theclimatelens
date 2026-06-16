@@ -2,69 +2,84 @@ document.addEventListener("DOMContentLoaded", async () => {
   const ui = window.ClimateLensUI;
   ui.renderStatus("#featured-story-slot", "loading", "Loading featured report...");
 
-  const [articles, featured, videos, authors, categories] = await Promise.all([
-    window.fetchLatestArticles(),
-    window.fetchFeaturedArticles(),
-    window.fetchFeaturedVideos(),
-    window.fetchAuthors(),
-    window.fetchCategories()
-  ]);
+  try {
+    const [articles, featured, videos, authors, categories] = await Promise.all([
+      window.fetchLatestArticles(),
+      window.fetchFeaturedArticles(),
+      window.fetchFeaturedVideos(),
+      window.fetchAuthors(),
+      window.fetchCategories()
+    ]);
 
-  renderAtmosphericMonitor();
+    renderAtmosphericMonitor();
 
-  const lead = featured[0] || articles[0];
-  const leadAuthor = ui.findAuthor(authors, lead);
-  document.querySelector("#featured-story-slot").innerHTML = `
-    <article class="featured-story">
-      <a class="feature-image" href="${ui.articleUrl(lead)}">
-        <img src="${ui.escapeHtml(lead.featuredImage)}" alt="${ui.escapeHtml(lead.title)}" referrerpolicy="no-referrer">
-        <span class="feature-badge">Featured Report</span>
-      </a>
-      <div class="featured-copy">
-        <div>
-          <div class="meta-row">
-            <span class="category-pill${lead.type === "Investigation" ? " investigation" : ""}">${ui.escapeHtml(lead.category)}</span>
-            <span>${ui.escapeHtml(ui.formatDate(lead.publishedAt))}</span>
+    const lead = featured[0] || articles[0];
+    const featuredSlot = document.querySelector("#featured-story-slot");
+    if (featuredSlot && lead) {
+      const leadAuthor = ui.findAuthor(authors, lead) || {};
+      featuredSlot.innerHTML = `
+        <article class="featured-story">
+          <a class="feature-image" href="${ui.articleUrl(lead)}">
+            <img src="${ui.escapeHtml(lead.featuredImage)}" alt="${ui.escapeHtml(lead.title)}" referrerpolicy="no-referrer">
+            <span class="feature-badge">Featured Report</span>
+          </a>
+          <div class="featured-copy">
+            <div>
+              <div class="meta-row">
+                <span class="category-pill${lead.type === "Investigation" ? " investigation" : ""}">${ui.escapeHtml(lead.category)}</span>
+                <span>${ui.escapeHtml(ui.formatDate(lead.publishedAt))}</span>
+              </div>
+              <a href="${ui.articleUrl(lead)}"><h3>${ui.escapeHtml(lead.title)}</h3></a>
+              <p>${ui.escapeHtml(lead.excerpt)}</p>
+            </div>
+            <div class="feature-footer">
+              <span class="author-chip">
+                <img src="${ui.escapeHtml(leadAuthor.image || "")}" alt="${ui.escapeHtml(leadAuthor.name || "Climate Lens")}" referrerpolicy="no-referrer">
+                <span><strong>${ui.escapeHtml(leadAuthor.name || "Climate Lens")}</strong><br>${ui.escapeHtml(leadAuthor.role || "Editorial Team")}</span>
+              </span>
+              <a class="btn btn-forest" href="${ui.articleUrl(lead)}">Read Investigation</a>
+            </div>
           </div>
-          <a href="${ui.articleUrl(lead)}"><h3>${ui.escapeHtml(lead.title)}</h3></a>
-          <p>${ui.escapeHtml(lead.excerpt)}</p>
+        </article>
+      `;
+    } else if (featuredSlot) {
+      featuredSlot.innerHTML = `
+        <div class="featured-story-empty">
+          <h3>No featured report available right now.</h3>
+          <p>Once a featured article is published in Sanity, it will appear here automatically.</p>
         </div>
-        <div class="feature-footer">
-          <span class="author-chip">
-            <img src="${ui.escapeHtml(leadAuthor.image)}" alt="${ui.escapeHtml(leadAuthor.name)}" referrerpolicy="no-referrer">
-            <span><strong>${ui.escapeHtml(leadAuthor.name)}</strong><br>${ui.escapeHtml(leadAuthor.role)}</span>
-          </span>
-          <a class="btn btn-forest" href="${ui.articleUrl(lead)}">Read Investigation</a>
-        </div>
-      </div>
-    </article>
-  `;
+      `;
+    }
 
-  document.querySelector("#explainer-stories").innerHTML = articles
-    .filter((article) => article.type === "Climate Explained")
-    .slice(0, 2)
-    .map((article) => ui.renderArticleCard(article, authors))
-    .join("");
+    document.querySelector("#explainer-stories").innerHTML = articles
+      .filter((article) => article.type === "Climate Explained")
+      .slice(0, 2)
+      .map((article) => ui.renderArticleCard(article, authors))
+      .join("");
 
-  document.querySelector("#secondary-stories").innerHTML = articles
-    .filter((article) => article.slug !== lead.slug && article.type !== "Climate Explained")
-    .slice(0, 3)
-    .map((article) => ui.renderArticleCard(article, authors))
-    .join("");
+    const leadSlug = lead?.slug;
+    document.querySelector("#secondary-stories").innerHTML = articles
+      .filter((article) => article.slug !== leadSlug && article.type !== "Climate Explained")
+      .slice(0, 3)
+      .map((article) => ui.renderArticleCard(article, authors))
+      .join("");
 
-  document.querySelector("#topic-pills").innerHTML = categories
-    .slice(0, 6)
-    .map((category) => `<span>${ui.escapeHtml(category.title)}</span>`)
-    .join("");
+    document.querySelector("#topic-pills").innerHTML = categories
+      .slice(0, 6)
+      .map((category) => `<span>${ui.escapeHtml(category.title)}</span>`)
+      .join("");
 
-  document.querySelector("#home-video-reels").innerHTML = videos
-    .slice(0, 4)
-    .map((video) => ui.renderVideoCard(video))
-    .join("");
+    document.querySelector("#home-video-reels").innerHTML = videos
+      .slice(0, 4)
+      .map((video) => ui.renderVideoCard(video))
+      .join("");
 
-  ui.renderNewsletter("#home-newsletter");
-  ui.setupNewsletter();
-  ui.setupVideoCards(document);
+    ui.renderNewsletter("#home-newsletter");
+    ui.setupNewsletter();
+    ui.setupVideoCards(document);
+  } catch (error) {
+    ui.renderStatus("#featured-story-slot", "error", "Featured report could not load.");
+  }
 });
 
 function renderAtmosphericMonitor() {
