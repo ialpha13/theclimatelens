@@ -72,6 +72,7 @@
   background: white;
   box-shadow: 0 10px 28px rgba(26, 47, 35, 0.06);
   transition: border-color 500ms ease, box-shadow 500ms ease, transform 500ms ease;
+  max-height: 24rem;
 }
 
 .featured-story:hover {
@@ -83,7 +84,7 @@
 .featured-story .feature-image {
   position: relative;
   min-height: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #e8e3d6;
 }
@@ -119,15 +120,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.75rem;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  gap: 1rem;
+  padding: 1rem 1.25rem;
 }
 
 .featured-copy h3 {
-  margin: 0.85rem 0 0.75rem;
+  margin: 0.65rem 0 0.55rem;
   color: var(--forest);
   font-family: var(--font-serif);
-  font-size: clamp(1.65rem, 3.2vw, 2.2rem);
+  font-size: clamp(1.35rem, 2.7vw, 1.8rem);
   line-height: 1.08;
   letter-spacing: 0;
 }
@@ -136,8 +137,8 @@
   max-width: 42rem;
   margin: 0;
   color: var(--sage);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.6;
+  font-size: 0.88rem;
 }
 
 .feature-footer {
@@ -146,15 +147,15 @@
   justify-content: space-between;
   gap: 1rem;
   border-top: 1px solid rgba(26, 47, 35, 0.1);
-  padding-top: 1.5rem;
+  padding-top: 0.9rem;
 }
 
 .featured-story-empty {
   display: grid;
   align-content: center;
-  min-height: 18rem;
+  min-height: 12rem;
   gap: 0.75rem;
-  padding: 1.75rem;
+  padding: 1.25rem 1.5rem;
   border: 1px dashed rgba(26, 47, 35, 0.18);
   border-radius: 0.625rem;
   background: rgba(255, 255, 255, 0.85);
@@ -378,7 +379,7 @@
 
   .featured-story .feature-image {
     aspect-ratio: 16 / 9;
-    min-height: 18rem;
+    min-height: 14rem;
   }
 
   .indicator-list {
@@ -394,21 +395,22 @@
   }
 
   .featured-copy {
-    gap: 1.25rem;
-    padding: 1.1rem;
+    gap: 0.9rem;
+    padding: 1rem;
   }
 
   .featured-copy h3 {
-    font-size: clamp(1.45rem, 7vw, 1.85rem);
+    font-size: clamp(1.2rem, 6vw, 1.55rem);
   }
 
   .featured-copy p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .feature-footer {
     align-items: flex-start;
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .feature-footer .btn {
