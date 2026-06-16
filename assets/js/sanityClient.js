@@ -459,6 +459,25 @@
     return (result || fallbackContent.authors).map(normalizeAuthor).filter(Boolean);
   }
 
+  async function fetchClimateDashboard() {
+    const result = await fetchGroq(`*[_type == "climateDashboard"][0]{
+      heading,
+      kicker,
+      description,
+      indicators[]{
+        id,
+        name,
+        subtitle,
+        currentValue,
+        baselineValue,
+        changeRate,
+        source,
+        impact
+      }
+    }`);
+    return result || null;
+  }
+
   window.ClimateLensCMS = {
     fallbackContent,
     fetchLatestArticles,
@@ -471,6 +490,7 @@
     fetchFeaturedVideos,
     fetchCategories,
     fetchAuthors,
+    fetchClimateDashboard,
     urlForImage
   };
 
@@ -484,5 +504,6 @@
   window.fetchFeaturedVideos = fetchFeaturedVideos;
   window.fetchCategories = fetchCategories;
   window.fetchAuthors = fetchAuthors;
+  window.fetchClimateDashboard = fetchClimateDashboard;
   window.urlForImage = urlForImage;
 })();
