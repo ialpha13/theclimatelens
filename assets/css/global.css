@@ -448,16 +448,16 @@ body[data-page="home"] .article-media {
 }
 
 body[data-page="home"] .article-media img {
-  object-fit: contain;
+  object-fit: fill;
   object-position: center;
-  padding: 0.45rem;
+  padding: 0;
 }
 
 body[data-page="home"] .video-card img,
 body[data-page="home"] .video-card video {
-  object-fit: contain;
+  object-fit: fill;
   object-position: center;
-  padding: 0.35rem;
+  padding: 0;
 }
 
 .video-card:hover img {
