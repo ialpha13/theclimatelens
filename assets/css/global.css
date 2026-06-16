@@ -363,6 +363,10 @@ button {
   display: none;
 }
 
+.mobile-nav[hidden] {
+  display: none !important;
+}
+
 .archive-bar {
   display: flex;
   align-items: center;
