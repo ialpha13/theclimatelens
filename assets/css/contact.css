@@ -16,10 +16,8 @@
 .tip-logs {
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.82);
+  background: transparent;
   padding: 1.5rem;
-  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.04);
-  backdrop-filter: blur(6px);
 }
 
 .contact-info-card h2,

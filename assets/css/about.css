@@ -21,17 +21,15 @@
   gap: 1.5rem;
   border-radius: 0.75rem;
   padding: clamp(1.5rem, 4vw, 2rem);
-  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.05);
-  backdrop-filter: blur(6px);
 }
 
 .mission-card.light {
   border: 1px solid rgba(26, 47, 35, 0.15);
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
 }
 
 .mission-card.dark {
-  background: linear-gradient(180deg, rgba(26, 47, 35, 0.95), rgba(26, 47, 35, 0.88));
+  background: linear-gradient(180deg, rgba(26, 47, 35, 0.92), rgba(26, 47, 35, 0.84));
   color: var(--earth-beige);
 }
 
@@ -85,7 +83,7 @@
 .author-card {
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
   padding: 1.5rem;
   text-align: center;
 }
@@ -130,7 +128,6 @@
   align-items: center;
   gap: 1.5rem;
   text-align: left;
-  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.04);
 }
 
 .author-card img {
