@@ -65,7 +65,7 @@
 
 .featured-story {
   display: grid;
-  grid-template-columns: 6fr 6fr;
+  grid-template-columns: minmax(16rem, 5fr) minmax(0, 7fr);
   overflow: hidden;
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.625rem;
@@ -84,7 +84,7 @@
 .featured-story .feature-image {
   position: relative;
   min-height: 0;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #e8e3d6;
   align-self: stretch;
@@ -122,29 +122,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.65rem;
-  padding: 0.85rem 0.95rem 0.8rem;
+  gap: 0.55rem;
+  padding: 0.8rem 0.95rem 0.75rem;
   min-width: 0;
   min-height: 0;
 }
 
 .featured-topline {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .featured-eyebrow {
   color: var(--sage);
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .featured-body {
   display: grid;
-  gap: 0.22rem;
+  gap: 0.2rem;
   min-width: 0;
 }
 
@@ -152,32 +152,45 @@
   margin: 0;
   color: var(--forest);
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2.1vw, 1.45rem);
-  line-height: 1.04;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.06;
   letter-spacing: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .featured-copy p {
-  max-width: 34rem;
+  max-width: 30rem;
   margin: 0;
   color: var(--sage);
-  line-height: 1.48;
-  font-size: 0.78rem;
+  line-height: 1.45;
+  font-size: 0.76rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .feature-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.65rem;
+  gap: 0.6rem;
   border-top: 1px solid rgba(26, 47, 35, 0.1);
   padding-top: 0.65rem;
   min-width: 0;
 }
 
+.feature-footer .author-chip {
+  min-width: 0;
+  gap: 0.45rem;
+}
+
 .feature-footer .author-chip img {
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .featured-story-empty {
@@ -408,8 +421,8 @@
   }
 
   .featured-story .feature-image {
-    aspect-ratio: 16 / 10;
-    min-height: 12rem;
+    aspect-ratio: 16 / 11;
+    min-height: 13rem;
   }
 
   .featured-story {
@@ -429,20 +442,20 @@
   }
 
   .featured-copy {
-    gap: 0.55rem;
-    padding: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.8rem;
   }
 
   .featured-topline {
-    gap: 0.2rem;
+    gap: 0.18rem;
   }
 
   .featured-copy h3 {
-    font-size: clamp(1.05rem, 5.6vw, 1.25rem);
+    font-size: clamp(1rem, 5.4vw, 1.2rem);
   }
 
   .featured-copy p {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
   }
 
   .feature-footer {
