@@ -473,11 +473,13 @@
   .feature-footer {
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.3rem;
+    padding-top: 0.35rem;
   }
 
   .feature-footer .author-chip {
     width: 100%;
+    flex: 1 1 auto;
   }
 
   .feature-footer .author-chip img {
@@ -487,5 +489,7 @@
 
   .feature-footer .btn {
     width: 100%;
+    min-height: 2.5rem;
+    padding: 0.7rem 1rem;
   }
 }
