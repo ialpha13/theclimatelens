@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.fetchAuthors(),
       window.fetchCategories()
     ]);
-    const dashboard = await window.fetchClimateDashboard();
 
-    renderAtmosphericMonitor(dashboard);
+    renderAtmosphericMonitor();
 
     const lead = featured[0] || articles[0];
     const featuredSlot = document.querySelector("#featured-story-slot");
@@ -83,67 +82,62 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-function renderAtmosphericMonitor(dashboardData) {
-  const indicators = (dashboardData && Array.isArray(dashboardData.indicators) && dashboardData.indicators.length)
-    ? dashboardData.indicators
-    : [
-        {
-          id: "co2",
-          name: "Atmospheric CO2 Concentration",
-          subtitle: "Mauna Loa Observatory Flask Samples",
-          currentValue: "426.87 ppm",
-          baselineValue: "280.00 ppm (Pre-Industrial)",
-          changeRate: "+2.41 ppm / year",
-          source: "NOAA / Scripps Oceanography (June 2026)",
-          impact: ["Traps solar infrared energy inside the biosphere.", "Accelerates ocean acidification.", "Extends heatwave limits globally."]
-        },
-        {
-          id: "temp",
-          name: "Global Temperature Anomaly",
-          subtitle: "Global Land-Ocean Temperature Index",
-          currentValue: "+1.48 C",
-          baselineValue: "0.0 C (1850-1900 Avg)",
-          changeRate: "+0.18 C per decade",
-          source: "NASA GISS / Copernicus Climate Service",
-          impact: ["Melts continental glaciers.", "Triples extreme high-pressure blocks.", "Shifts agricultural limits."]
-        },
-        {
-          id: "sealevel",
-          name: "Global Mean Sea Level Change",
-          subtitle: "Satellite Altimetry Record",
-          currentValue: "+104.2 mm",
-          baselineValue: "0.0 mm (1993 Altimetry Datum)",
-          changeRate: "+4.6 mm / year",
-          source: "NASA Sea Level Change Science Team",
-          impact: ["Compromises coastal aquifers.", "Magnifies storm surge reach.", "Forces infrastructure retreats."]
-        },
-        {
-          id: "oceanheat",
-          name: "Ocean Heat Content Anomaly",
-          subtitle: "0-2000m Thermal Storage",
-          currentValue: "+284 ZJ",
-          baselineValue: "0.0 ZJ (1955-2000 Baseline)",
-          changeRate: "+9.5 ZJ / year",
-          source: "NOAA National Centers for Environmental Info",
-          impact: ["Stores most excess system heat.", "Triggers marine heatwaves.", "Expands ocean volume."]
-        }
-      ];
+function renderAtmosphericMonitor() {
+  const indicators = [
+    {
+      id: "co2",
+      name: "Atmospheric CO2 Concentration",
+      subtitle: "Mauna Loa Observatory Flask Samples",
+      currentValue: "426.87 ppm",
+      baselineValue: "280.00 ppm (Pre-Industrial)",
+      changeRate: "+2.41 ppm / year",
+      source: "NOAA / Scripps Oceanography (June 2026)",
+      impact: ["Traps solar infrared energy inside the biosphere.", "Accelerates ocean acidification.", "Extends heatwave limits globally."]
+    },
+    {
+      id: "temp",
+      name: "Global Temperature Anomaly",
+      subtitle: "Global Land-Ocean Temperature Index",
+      currentValue: "+1.48 C",
+      baselineValue: "0.0 C (1850-1900 Avg)",
+      changeRate: "+0.18 C per decade",
+      source: "NASA GISS / Copernicus Climate Service",
+      impact: ["Melts continental glaciers.", "Triples extreme high-pressure blocks.", "Shifts agricultural limits."]
+    },
+    {
+      id: "sealevel",
+      name: "Global Mean Sea Level Change",
+      subtitle: "Satellite Altimetry Record",
+      currentValue: "+104.2 mm",
+      baselineValue: "0.0 mm (1993 Altimetry Datum)",
+      changeRate: "+4.6 mm / year",
+      source: "NASA Sea Level Change Science Team",
+      impact: ["Compromises coastal aquifers.", "Magnifies storm surge reach.", "Forces infrastructure retreats."]
+    },
+    {
+      id: "oceanheat",
+      name: "Ocean Heat Content Anomaly",
+      subtitle: "0-2000m Thermal Storage",
+      currentValue: "+284 ZJ",
+      baselineValue: "0.0 ZJ (1955-2000 Baseline)",
+      changeRate: "+9.5 ZJ / year",
+      source: "NOAA National Centers for Environmental Info",
+      impact: ["Stores most excess system heat.", "Triggers marine heatwaves.", "Expands ocean volume."]
+    }
+  ];
 
-  const target = document.querySelector("#atmospheric-stress-dashboard-slot");
+  const target = document.querySelector("#atmospheric-stress-dashboard");
   if (!target) return;
   let active = indicators[0];
   let mode = "current";
-  const heading = dashboardData?.heading || "Atmospheric Stress Ledger";
-  const kicker = dashboardData?.kicker || "CL-Atmospheric-Monitor";
-  const description = dashboardData?.description || "An active ledger of direct physical planet metrics. Read baselines, click trend vectors, or view empirical impact profiles.";
 
   function paint() {
     target.innerHTML = `
       <div class="atmospheric-dashboard">
         <div class="dashboard-header">
-          <span class="hero-kicker">${ui.escapeHtml(kicker)}</span>
-          <h2>${ui.escapeHtml(heading)}</h2>
-          <p>${ui.escapeHtml(description)}</p>
+          <span class="hero-kicker">CL-Atmospheric-Monitor</span>
+          <h2>Atmospheric Stress Ledger</h2>
+          <p>An active ledger of direct physical planet metrics. Read baselines, click trend vectors, or view empirical impact profiles.</p>
         </div>
         <div class="dashboard-body">
           <div class="indicator-list">
