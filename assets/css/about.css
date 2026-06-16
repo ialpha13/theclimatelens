@@ -1,0 +1,168 @@
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.mission-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-radius: 0.75rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
+}
+
+.mission-card.light {
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  background: white;
+}
+
+.mission-card.dark {
+  background: var(--forest);
+  color: var(--earth-beige);
+}
+
+.mission-card span {
+  color: var(--gold);
+}
+
+.mission-card h2 {
+  margin: 0.8rem 0;
+  color: var(--forest);
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.mission-card.dark h2 {
+  color: white;
+}
+
+.mission-card p {
+  margin: 0;
+  color: var(--sage);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.mission-card.dark p {
+  color: #cac4b7;
+}
+
+.mission-card strong {
+  color: var(--forest);
+  font-size: 0.8rem;
+}
+
+.mission-card.dark strong {
+  color: var(--gold);
+}
+
+.center-title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tenet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.tenet-grid article,
+.author-card {
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.5rem;
+  background: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.tenet-grid span {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 auto 0.75rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(26, 47, 35, 0.05);
+  color: var(--forest);
+  font-size: 0;
+}
+
+.tenet-grid span::first-letter {
+  font-size: 1rem;
+}
+
+.tenet-grid h3 {
+  margin: 0 0 0.6rem;
+  color: var(--forest);
+  font-family: var(--font-serif);
+}
+
+.tenet-grid p {
+  margin: 0;
+  color: var(--sage);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.author-card img {
+  width: 5rem;
+  height: 5rem;
+  flex: 0 0 auto;
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.author-card h3 {
+  margin: 0;
+  color: var(--forest);
+  font-family: var(--font-serif);
+}
+
+.author-card span {
+  display: block;
+  margin: 0.25rem 0 0.6rem;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.author-card p {
+  margin: 0;
+  color: var(--sage);
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .about-intro-grid,
+  .tenet-grid,
+  .author-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .author-card {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+}

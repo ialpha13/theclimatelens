@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latest Stories | The Climate Lens</title>
+    <meta name="description" content="Browse the latest climate journalism, investigations, and explainers from The Climate Lens." />
+    <meta property="og:title" content="Latest Stories | The Climate Lens" />
+    <meta property="og:description" content="Browse the latest climate journalism and investigations." />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/latest-stories.css" />
+  </head>
+  <body data-page="latest">
+    <div id="site-shell">
+      <div id="announcement-bar"></div>
+      <header id="site-header"></header>
+      <main class="site-main container page-stack">
+        <section class="section-header">
+          <span>Chronological Archive</span>
+          <h1>Journalism Index</h1>
+          <p>Browse ecological logs, field files, carbon audits, and administrative climate summaries.</p>
+        </section>
+        <section class="stories-toolbar" id="stories-toolbar">
+          <div class="filter-row" id="category-filters-container"></div>
+          <div class="toolbar-actions">
+            <label class="search-field">
+              <span aria-hidden="true">Search</span>
+              <input id="story-search" type="search" placeholder="Search index keywords..." />
+            </label>
+            <div class="view-toggle" role="group" aria-label="View mode">
+              <button id="grid-view" class="active" type="button" aria-label="Grid view">Grid</button>
+              <button id="list-view" type="button" aria-label="List view">List</button>
+            </div>
+          </div>
+        </section>
+        <div id="stories-status"></div>
+        <section id="stories-results" class="article-grid"></section>
+      </main>
+      <footer id="site-footer"></footer>
+    </div>
+    <script src="assets/js/sanityClient.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/latest-stories.js"></script>
+  </body>
+</html>

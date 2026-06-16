@@ -1,0 +1,41 @@
+.explainer-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: var(--forest);
+  color: #ede9e0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.explainer-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 33%;
+  background: linear-gradient(to left, rgba(244, 241, 234, 0.08), transparent);
+  pointer-events: none;
+}
+
+.explainer-banner span {
+  display: inline-block;
+  border-radius: 0.25rem;
+  background: #143224;
+  color: var(--gold);
+  padding: 0.35rem 0.7rem;
+}
+
+.explainer-banner h2 {
+  max-width: 36rem;
+  margin: 1rem 0 0.75rem;
+  color: white;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.explainer-banner p {
+  max-width: 42rem;
+  margin: 0;
+  color: #cac4b7;
+  font-size: 0.85rem;
+  line-height: 1.75;
+}

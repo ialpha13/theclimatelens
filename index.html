@@ -3,11 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>The Climate Lens | Independent Climate Journalism</title>
+    <meta name="description" content="Independent, evidence-based climate journalism, investigations, explainers, and video field reports." />
+    <meta property="og:title" content="The Climate Lens" />
+    <meta property="og:description" content="Independent, evidence-based climate journalism." />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body data-page="home">
+    <div id="site-shell">
+      <div id="announcement-bar"></div>
+      <header id="site-header"></header>
+      <main class="site-main">
+        <section class="hero-banner" id="hero-banner">
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="hero-kicker">Watch Earth Through Nature's Lens</span>
+            <h1>Independent,<br /> Evidence-Based <span>Climate Journalism</span></h1>
+            <p>We observe Earth's systems through a scientific lens, translating nature's signals into rigorous, ad-free climate reporting.</p>
+            <div class="hero-actions">
+              <a class="btn btn-gold" href="latest-stories.html">Explore Latest Stories</a>
+              <a class="btn btn-outline-light" href="investigations.html">Long-Form Investigations</a>
+            </div>
+          </div>
+        </section>
+
+        <div class="container page-stack">
+          <section id="atmospheric-stress-dashboard"></section>
+
+          <section class="section-block" id="home-featured-story">
+            <div class="section-header">
+              <span>Lead Investigation</span>
+              <h2>Featured Reportage</h2>
+              <p>Our primary investigation of the week, detailing ecological stressors and direct human testimony.</p>
+            </div>
+            <div id="featured-story-slot"></div>
+          </section>
+
+          <section class="section-block" id="home-explainers">
+            <div class="section-header">
+              <span>Explainers</span>
+              <h2>Climate Explained</h2>
+              <p>Short, focused explainers to make complex systems clear.</p>
+            </div>
+            <div class="article-grid two-col" id="explainer-stories"></div>
+          </section>
+
+          <section class="section-block" id="home-latest">
+            <div class="section-header">
+              <span>Latest</span>
+              <h2>Latest Stories</h2>
+              <p>Recent reporting from the field and newsroom.</p>
+            </div>
+            <div class="home-latest-layout">
+              <div class="article-grid two-col" id="secondary-stories"></div>
+              <aside class="home-aside">
+                <div class="aside-card">
+                  <h3>On The Beat</h3>
+                  <p>Short updates and dispatches from reporters in the field.</p>
+                </div>
+                <div class="aside-card">
+                  <h3>Topics</h3>
+                  <div class="topic-pills" id="topic-pills"></div>
+                </div>
+              </aside>
+            </div>
+          </section>
+
+          <section class="section-block" id="home-videos">
+            <div class="section-header">
+              <span>Video</span>
+              <h2>Field Reports &amp; Video Reels</h2>
+              <p>Short visual pieces from our correspondents and lab demonstrations.</p>
+            </div>
+            <div class="video-grid" id="home-video-reels"></div>
+          </section>
+
+          <section id="home-newsletter"></section>
+        </div>
+      </main>
+      <footer id="site-footer"></footer>
+    </div>
+    <script src="assets/js/sanityClient.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/index.js"></script>
   </body>
 </html>
-

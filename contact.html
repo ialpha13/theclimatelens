@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | The Climate Lens</title>
+    <meta name="description" content="Contact The Climate Lens newsroom with tips, research, and editorial inquiries." />
+    <meta property="og:title" content="Contact | The Climate Lens" />
+    <meta property="og:description" content="Contact The Climate Lens newsroom." />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
+  </head>
+  <body data-page="contact">
+    <div id="site-shell">
+      <div id="announcement-bar"></div>
+      <header id="site-header"></header>
+      <main class="site-main container page-stack narrow">
+        <section class="section-header">
+          <span>Secure Tip Line</span>
+          <h1>Contact Our Newsroom</h1>
+          <p>Have an environmental document leak, research thesis to share, or feedback on our publications? Connect with our editors.</p>
+        </section>
+        <section class="contact-layout">
+          <aside class="contact-sidebar">
+            <div class="contact-info-card">
+              <h2>Whistleblower Tip Protection</h2>
+              <p>We respect chemical engineers, policy coordinators, and research scientists who raise the alarm on environmental non-compliance. Our communications use standard encryption standards.</p>
+              <span>Secure Tip Address:</span>
+              <a href="mailto:tips@theclimatelens.org">tips@theclimatelens.org</a>
+            </div>
+            <div class="contact-points">
+              <h2>Direct Contact Points</h2>
+              <p><strong>Editorial Inquiries:</strong><a href="mailto:editorial@climatelens.org">editorial@climatelens.org</a></p>
+              <p><strong>Press &amp; syndication:</strong><a href="mailto:press@climatelens.org">press@climatelens.org</a></p>
+              <p><strong>Academic Research:</strong><a href="mailto:science@climatelens.org">science@climatelens.org</a></p>
+            </div>
+            <p class="source-note"><strong>Note:</strong> We strictly never publish personal emails, IP headers, or physical location telemetry of sources under disclosure protocols.</p>
+          </aside>
+          <section class="contact-form-card">
+            <form id="contact-form">
+              <div class="form-grid">
+                <label>Name<input name="name" required placeholder="Your name" /></label>
+                <label>Email<input name="email" type="email" required placeholder="you@example.com" /></label>
+              </div>
+              <label>Inquiry Type<select name="inquiryType"><option>Editorial Inquiry</option><option>Secure Tip</option><option>Research Submission</option><option>Press Request</option></select></label>
+              <label>Message<textarea name="message" required rows="7" placeholder="Share the context, evidence, or request..."></textarea></label>
+              <button class="btn btn-forest" type="submit">Submit Secure Note</button>
+              <p class="form-comment">This static form currently shows a local success message. Connect Formspree, Web3Forms, EmailJS, or a Vercel serverless function later for real email delivery.</p>
+              <div id="contact-success" class="success-message" hidden>Your message has been recorded locally for this session.</div>
+            </form>
+          </section>
+        </section>
+        <section id="local-tip-logs" class="tip-logs" hidden></section>
+      </main>
+      <footer id="site-footer"></footer>
+    </div>
+    <script src="assets/js/sanityClient.js"></script>
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/contact.js"></script>
+  </body>
+</html>

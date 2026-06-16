@@ -1,0 +1,109 @@
+.stories-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.75rem;
+  background: white;
+  padding: 1rem;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-row button,
+.view-toggle button {
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--sage);
+  cursor: pointer;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.filter-row button.active,
+.filter-row button:hover,
+.view-toggle button.active {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--earth-beige);
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-field {
+  position: relative;
+  min-width: 16rem;
+}
+
+.search-field span {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  color: var(--sage);
+  font-size: 0;
+  transform: translateY(-50%);
+}
+
+.search-field span::before {
+  content: "Search";
+  font-size: 0.65rem;
+}
+
+.search-field input {
+  width: 100%;
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.25rem;
+  background: white;
+  color: var(--charcoal);
+  padding: 0.65rem 0.75rem 0.65rem 3.1rem;
+  font-size: 0.78rem;
+}
+
+.view-toggle {
+  display: flex;
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.25rem;
+  background: rgba(214, 208, 194, 0.4);
+  padding: 0.12rem;
+}
+
+#stories-status {
+  color: var(--sage);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#stories-results.list-mode {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (max-width: 900px) {
+  .stories-toolbar,
+  .toolbar-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-field {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,126 @@
+.contact-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 3rem;
+}
+
+.contact-sidebar {
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+}
+
+.contact-info-card,
+.contact-form-card,
+.tip-logs {
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.75rem;
+  background: white;
+  padding: 1.5rem;
+}
+
+.contact-info-card h2,
+.contact-points h2 {
+  margin: 0 0 0.75rem;
+  color: var(--forest);
+  font-family: var(--font-serif);
+}
+
+.contact-info-card p,
+.contact-points p,
+.form-comment {
+  color: var(--sage);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.contact-info-card span,
+.contact-points strong {
+  display: block;
+  color: var(--sage);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-info-card a,
+.contact-points a {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--forest);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.source-note {
+  border: 1px solid rgba(127, 29, 29, 0.15);
+  border-radius: 0.35rem;
+  background: rgba(69, 10, 10, 0.05);
+  color: #991b1b;
+  padding: 0.85rem;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+#contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+#contact-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--forest);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#contact-form input,
+#contact-form select,
+#contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.35rem;
+  background: #fdfcfb;
+  color: var(--charcoal);
+  padding: 0.85rem;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.success-message {
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  border-radius: 0.35rem;
+  background: rgba(16, 185, 129, 0.08);
+  color: #047857;
+  padding: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.tip-entry {
+  border: 1px solid rgba(26, 47, 35, 0.15);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .contact-layout,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

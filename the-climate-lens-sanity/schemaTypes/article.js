@@ -1,0 +1,46 @@
+export default {
+  name: 'article',
+  title: 'Article',
+  type: 'document',
+  fields: [
+    { name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required().max(120) },
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title', maxLength: 96 }, validation: (Rule) => Rule.required() },
+    { name: 'category', title: 'Category', type: 'reference', to: [{ type: 'category' }], validation: (Rule) => Rule.required() },
+    {
+      name: 'type',
+      title: 'Type',
+      type: 'string',
+      options: {
+        list: ['News', 'Blog', 'Investigation', 'Climate Explained', 'Opinion'],
+        layout: 'radio',
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    { name: 'author', title: 'Author', type: 'reference', to: [{ type: 'author' }], validation: (Rule) => Rule.required() },
+    { name: 'publishedAt', title: 'Published At', type: 'datetime', validation: (Rule) => Rule.required() },
+    { name: 'readingTime', title: 'Reading Time', type: 'string', description: 'Example: 6 min read' },
+    {
+      name: 'featuredImage',
+      title: 'Featured Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [{ name: 'alt', title: 'Alt Text', type: 'string' }],
+      validation: (Rule) => Rule.required(),
+    },
+    { name: 'excerpt', title: 'Excerpt', type: 'text', rows: 3, validation: (Rule) => Rule.required().max(240) },
+    { name: 'body', title: 'Body', type: 'blockContent' },
+    { name: 'tags', title: 'Tags', type: 'array', of: [{ type: 'string' }] },
+    { name: 'featured', title: 'Featured', type: 'boolean', initialValue: false },
+    { name: 'homepageFeatured', title: 'Homepage Featured', type: 'boolean', initialValue: false },
+    { name: 'seoTitle', title: 'SEO Title', type: 'string' },
+    { name: 'seoDescription', title: 'SEO Description', type: 'text', rows: 2 },
+    { name: 'seoImage', title: 'SEO Image', type: 'image', options: { hotspot: true } },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'type',
+      media: 'featuredImage',
+    },
+  },
+};

@@ -1,38 +1,81 @@
 # The Climate Lens
 
-Independent climate journalism frontend powered by HTML, CSS, JavaScript, React/Vite, Sanity CMS, and Vercel.
+Static HTML, CSS, and JavaScript version of The Climate Lens. The existing editorial design is preserved while Sanity CMS becomes the content source for articles, investigations, explainers, authors, categories, featured stories, and videos/reels.
 
-The original editorial design, spacing, typography, animation, hover states, responsive behavior, and component structure are preserved. Sanity only replaces the content source for articles, authors, categories, videos, featured stories, and reels.
+No PHP, React, Next.js, Laravel, WordPress, MySQL, or backend framework is required for the public site.
+
+## Frontend Structure
+
+- `index.html`
+- `latest-stories.html`
+- `article.html`
+- `investigations.html`
+- `climate-explained.html`
+- `videos.html`
+- `about.html`
+- `contact.html`
+- `assets/css/global.css`
+- One page CSS file per page in `assets/css/`
+- `assets/js/sanityClient.js`
+- `assets/js/global.js`
+- One page JS file per page in `assets/js/`
+- `the-climate-lens-sanity/` for the separate Sanity Studio
 
 ## Run Locally
 
-**Prerequisites:** Node.js
+Because this is a static site, you can serve the folder with any static server.
 
-1. Install dependencies:
-   `npm install`
-2. Copy `.env.example` to `.env.local`.
-3. Add your Sanity values:
-   `VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET`, `VITE_SANITY_API_VERSION`, and `VITE_SANITY_USE_CDN`.
-4. Run the app:
-   `npm run dev`
+Example:
 
-If Sanity variables are missing or the CMS is unavailable, the site uses the bundled editorial fallback content so the original layout remains visible during setup.
+`npx serve .`
 
-## Sanity Content
+Then open the local URL shown by the server.
 
-Schemas are stored in `src/sanity/schemas`:
+## Connect Sanity
 
-- `article`
-- `author`
-- `category`
-- `videoReel`
+1. Create a Sanity project.
+2. Open `assets/js/sanityClient.js`.
+3. Replace `YOUR_SANITY_PROJECT_ID` with your Sanity project ID.
+4. Keep `SANITY_DATASET` as `production` unless your dataset has another name.
+5. In Sanity Manage, add CORS origins for your local URL and Vercel domain.
 
-The frontend queries Sanity from `src/sanity/client.ts` and `src/sanity/queries.ts`. Keep visual components focused on rendering so design preservation remains easy to audit.
+The frontend uses Sanity's public CDN/API for read-only published content. Do not put private write tokens in frontend JavaScript.
 
-## Vercel
+## Content Workflow
 
-Use the default Vercel Vite settings:
+1. Log into Sanity Studio.
+2. Create or edit an article, investigation, blog, climate explained post, author, category, or video/reel.
+3. Upload images or thumbnails in Sanity.
+4. For videos, add an external video URL from YouTube, Vimeo, Cloudinary, Mux, Bunny.net, or another video platform.
+5. Click Publish.
+6. The Vercel-hosted website fetches the published content automatically.
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- Environment variables: the same `VITE_SANITY_*` values from `.env.example`
+## Contact Form
+
+`contact.html` has a static contact form UI and local success message. Connect Formspree, Web3Forms, EmailJS, or a Vercel serverless function later for real email delivery.
+
+## Deploy to Vercel
+
+Use:
+
+- Framework Preset: Other
+- Build Command: empty
+- Output Directory: `./`
+
+The included `vercel.json` is configured for static hosting.
+
+## Sanity Studio
+
+The Studio is in `the-climate-lens-sanity/`.
+
+Setup:
+
+`cd the-climate-lens-sanity`
+
+`npm install`
+
+`npm run dev`
+
+Deploy Studio:
+
+`npx sanity deploy`

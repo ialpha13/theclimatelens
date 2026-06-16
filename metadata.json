@@ -1,6 +1,0 @@
-{
-  "name": "The Climate Lens",
-  "description": "An independent, modern, high-end climate journalism platform focused on investigations, science, Policy, and field reporting.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
