@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.title = `${article.seoTitle || article.title} | The Climate Lens`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", article.seoDescription || article.excerpt);
+    updateStructuredData(article, author);
     renderArticle(article, author, related, authors);
     setupReadingProgress();
   } catch (error) {
@@ -87,5 +88,41 @@ document.addEventListener("DOMContentLoaded", async () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.width = total > 0 ? `${(window.scrollY / total) * 100}%` : "0";
     }, { passive: true });
+  }
+
+  function updateStructuredData(article, author) {
+    const existing = document.querySelector('script[data-article-schema]');
+    if (existing) existing.remove();
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: article.seoTitle || article.title,
+      description: article.seoDescription || article.excerpt,
+      datePublished: article.publishedAt,
+      dateModified: article.publishedAt,
+      mainEntityOfPage: window.location.href,
+      author: {
+        "@type": "Person",
+        name: author.name || "The Climate Lens"
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "The Climate Lens",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://theclimatelens.vercel.app/assets/images/theclimatelenslogo2.png"
+        }
+      },
+      image: article.featuredImage ? [article.featuredImage] : [],
+      articleSection: article.category || "Climate News",
+      keywords: (article.tags || []).join(", ")
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.dataset.articleSchema = "true";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
   }
 });
