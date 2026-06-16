@@ -1,3 +1,13 @@
+.about-intro-grid,
+.tenet-grid,
+.author-grid {
+  position: relative;
+}
+
+.about-intro-grid {
+  align-items: stretch;
+}
+
 .about-intro-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -11,15 +21,17 @@
   gap: 1.5rem;
   border-radius: 0.75rem;
   padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.05);
+  backdrop-filter: blur(6px);
 }
 
 .mission-card.light {
   border: 1px solid rgba(26, 47, 35, 0.15);
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .mission-card.dark {
-  background: var(--forest);
+  background: linear-gradient(180deg, rgba(26, 47, 35, 0.95), rgba(26, 47, 35, 0.88));
   color: var(--earth-beige);
 }
 
@@ -73,7 +85,7 @@
 .author-card {
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.5rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   padding: 1.5rem;
   text-align: center;
 }
@@ -118,6 +130,7 @@
   align-items: center;
   gap: 1.5rem;
   text-align: left;
+  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.04);
 }
 
 .author-card img {

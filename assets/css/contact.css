@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 5fr 7fr;
   gap: 3rem;
+  align-items: stretch;
 }
 
 .contact-sidebar {
@@ -15,8 +16,10 @@
 .tip-logs {
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.75rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.82);
   padding: 1.5rem;
+  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.04);
+  backdrop-filter: blur(6px);
 }
 
 .contact-info-card h2,
@@ -93,7 +96,7 @@
   width: 100%;
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.35rem;
-  background: #fdfcfb;
+  background: rgba(253, 252, 251, 0.92);
   color: var(--charcoal);
   padding: 0.85rem;
   font-size: 0.9rem;

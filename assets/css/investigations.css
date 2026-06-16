@@ -4,11 +4,14 @@
   align-items: center;
   gap: 2rem;
   overflow: hidden;
-  border: 1px solid rgba(127, 29, 29, 0.4);
+  border: 1px solid rgba(127, 29, 29, 0.34);
   border-radius: 0.75rem;
-  background: var(--danger);
+  background:
+    linear-gradient(135deg, rgba(64, 18, 18, 0.95), rgba(127, 29, 29, 0.88)),
+    radial-gradient(circle at top right, rgba(197, 155, 39, 0.12), transparent 34%);
   color: #fee2e2;
   padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 14px 34px rgba(18, 40, 30, 0.08);
 }
 
 .desk-icon {
@@ -49,9 +52,10 @@
   margin: 0 auto;
   border: 1px solid rgba(26, 47, 35, 0.15);
   border-radius: 0.5rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.82);
   padding: 2rem;
   text-align: center;
+  box-shadow: 0 12px 28px rgba(18, 40, 30, 0.04);
 }
 
 .awards-panel span {
