@@ -32,10 +32,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     target.innerHTML = `
       <div class="article-toolbar">
         <a class="article-back" href="latest-stories.html">Back to Articles</a>
-        <div class="article-actions">
-          <button type="button" data-like title="Like article">Like</button>
-          <button type="button" data-bookmark title="Bookmark article">Save</button>
-        </div>
       </div>
       <header class="article-head">
         <div class="meta-row">
@@ -83,8 +79,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       </section>
     `;
     target.querySelector("[data-copy]").addEventListener("click", () => navigator.clipboard.writeText(window.location.href));
-    target.querySelector("[data-like]").addEventListener("click", (event) => event.currentTarget.classList.toggle("active"));
-    target.querySelector("[data-bookmark]").addEventListener("click", (event) => event.currentTarget.classList.toggle("active"));
   }
 
   function setupReadingProgress() {
