@@ -24,16 +24,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             <span class="feature-badge">Featured Report</span>
           </a>
           <div class="featured-copy">
-            <div class="featured-topline">
+            <div class="featured-body">
+              <a href="${ui.articleUrl(lead)}"><h3>${ui.escapeHtml(lead.title)}</h3></a>
               <span class="featured-eyebrow">Lead Investigation</span>
               <div class="meta-row">
                 <span class="category-pill${lead.type === "Investigation" ? " investigation" : ""}">${ui.escapeHtml(lead.category)}</span>
                 <span>${ui.escapeHtml(ui.formatDate(lead.publishedAt))}</span>
                 <span>${ui.escapeHtml(lead.readingTime || "")}</span>
               </div>
-            </div>
-            <div class="featured-body">
-              <a href="${ui.articleUrl(lead)}"><h3>${ui.escapeHtml(lead.title)}</h3></a>
               <p>${ui.escapeHtml(lead.excerpt)}</p>
             </div>
             <div class="feature-footer">
