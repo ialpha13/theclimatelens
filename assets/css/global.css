@@ -31,9 +31,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(249, 248, 243, 0.95)),
-    url("../images/background2.webp") center top / cover no-repeat fixed;
+  background: url("../images/background2.webp") center top / cover no-repeat fixed;
   color: var(--charcoal);
   font-family: var(--font-sans);
 }
@@ -44,9 +42,9 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(249, 248, 243, 0.82)),
     radial-gradient(circle at top left, rgba(26, 47, 35, 0.08), transparent 36%),
-    radial-gradient(circle at top right, rgba(197, 155, 39, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(249, 248, 243, 0.55), rgba(249, 248, 243, 0.9));
+    radial-gradient(circle at top right, rgba(197, 155, 39, 0.08), transparent 28%);
   pointer-events: none;
 }
 
