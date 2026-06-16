@@ -1,5 +1,4 @@
-import { Article } from '../types';
-import { mockArticles } from '../data/mockData';
+import { useContent } from '../data/content';
 import ArticleCard from '../components/ArticleCard';
 import SectionHeader from '../components/SectionHeader';
 import { ShieldAlert, Fingerprint, Eye, Award } from 'lucide-react';
@@ -9,8 +8,9 @@ interface InvestigationsProps {
 }
 
 export default function Investigations({ onSelectArticle }: InvestigationsProps) {
+  const { articles } = useContent();
   // Extract articles that are explicitly flagged as long-form investigations
-  const investigationsList = mockArticles.filter((a) => a.isInvestigation);
+  const investigationsList = articles.filter((a) => a.isInvestigation);
 
   return (
     <div className="space-y-12 animate-in fade-in duration-500" id="investigations-view">

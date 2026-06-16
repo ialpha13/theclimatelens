@@ -1,6 +1,6 @@
 import React from 'react';
-import { Article, Video } from '../types';
-import { mockArticles, mockVideos, mockCategories } from '../data/mockData';
+import { Video } from '../types';
+import { useContent } from '../data/content';
 import ArticleCard from '../components/ArticleCard';
 import VideoCard from '../components/VideoCard';
 import SectionHeader from '../components/SectionHeader';
@@ -14,10 +14,11 @@ interface HomeProps {
 }
 
 export default function Home({ onSelectArticle, onTabChange }: HomeProps) {
-  const featuredArticle = mockArticles.find((a) => a.featured) || mockArticles[0];
-  const secondaryStories = mockArticles.filter((a) => a.id !== featuredArticle.id && !a.isExplained).slice(0, 3);
-  const explainerStories = mockArticles.filter((a) => a.isExplained).slice(0, 2);
-  const videoReels = mockVideos.slice(0, 4);
+  const { articles, videos, categories } = useContent();
+  const featuredArticle = articles.find((a) => a.featured) || articles[0];
+  const secondaryStories = articles.filter((a) => a.id !== featuredArticle.id && !a.isExplained).slice(0, 3);
+  const explainerStories = articles.filter((a) => a.isExplained).slice(0, 2);
+  const videoReels = videos.slice(0, 4);
 
   return (
     <div className="space-y-16 animate-in fade-in duration-500" id="home-view">
@@ -142,7 +143,7 @@ export default function Home({ onSelectArticle, onTabChange }: HomeProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {explainerStories.map((a) => (
-                <ArticleCard key={a.id} article={a} onRead={() => onSelectArticle(a.id)} />
+                <ArticleCard key={a.id} article={a} onSelect={onSelectArticle} />
               ))}
             </div>
           </section>
@@ -160,7 +161,7 @@ export default function Home({ onSelectArticle, onTabChange }: HomeProps) {
             <div className="lg:col-span-2 space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {secondaryStories.map((s) => (
-                  <ArticleCard key={s.id} article={s} onRead={() => onSelectArticle(s.id)} />
+                  <ArticleCard key={s.id} article={s} onSelect={onSelectArticle} />
                 ))}
               </div>
             </div>
@@ -174,7 +175,7 @@ export default function Home({ onSelectArticle, onTabChange }: HomeProps) {
               <div className="bg-white rounded-xl border border-forest/10 p-4">
                 <h4 className="font-serif text-lg font-bold text-forest mb-2">Topics</h4>
                 <div className="flex flex-wrap gap-2">
-                  {mockCategories.slice(0, 6).map((c) => (
+                  {categories.slice(0, 6).map((c) => (
                     <span key={c.id} className="px-3 py-1 text-xs rounded bg-forest/5 text-forest font-mono">{c.title}</span>
                   ))}
                 </div>

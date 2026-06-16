@@ -1,5 +1,4 @@
-import { Article } from '../types';
-import { mockArticles } from '../data/mockData';
+import { useContent } from '../data/content';
 import ArticleCard from '../components/ArticleCard';
 import SectionHeader from '../components/SectionHeader';
 import { BookOpen, Sparkles, LayoutGrid } from 'lucide-react';
@@ -9,8 +8,9 @@ interface ClimateExplainedProps {
 }
 
 export default function ClimateExplained({ onSelectArticle }: ClimateExplainedProps) {
+  const { articles } = useContent();
   // Extract explainers
-  const explainers = mockArticles.filter((a) => a.isExplained);
+  const explainers = articles.filter((a) => a.isExplained);
 
   return (
     <div className="space-y-12 animate-in fade-in duration-500" id="climate-explained-view">

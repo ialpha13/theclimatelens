@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import SectionHeader from '../components/SectionHeader';
-import { mockArticles, mockAuthors, mockCategories, mockVideos } from '../data/mockData';
+import { useContent } from '../data/content';
 import { 
   Database, FileCode, CheckCircle, HelpCircle, ExternalLink, RefreshCw, 
   Settings, Sliders, Play, AlertTriangle, ShieldCheck, Eye 
 } from 'lucide-react';
 
 export default function CMSPlayground() {
+  const { articles, authors, categories, videos, source, isLoading } = useContent();
   const [activeSchema, setActiveSchema] = useState<'article' | 'author' | 'category' | 'video'>('article');
   const [copiedCode, setCopiedCode] = useState(false);
 
@@ -224,6 +225,12 @@ export default defineType({
             <span className="font-mono text-[9px] uppercase text-sage-light block">Query Protocol</span>
             <span className="font-sans font-bold text-gold text-xs">GROQ / GraphQL</span>
           </div>
+          <div className="p-3 bg-[#112a1d] border border-sage/10 rounded">
+            <span className="font-mono text-[9px] uppercase text-sage-light block">Content Source</span>
+            <span className="font-sans font-bold text-earth-beige text-xs">
+              {isLoading ? 'Connecting...' : source === 'sanity' ? 'Sanity CDN' : 'Bundled Fallback'}
+            </span>
+          </div>
         </div>
       </section>
 
@@ -301,6 +308,20 @@ export default defineType({
         <p className="font-sans text-xs sm:text-sm text-sage text-center max-w-2xl mx-auto leading-relaxed">
           Follow these sequential, industry-standard steps to deploy your decoupled Climate Lens journalism platform to production servers.
         </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+          {[
+            ['Articles', articles.length],
+            ['Authors', authors.length],
+            ['Categories', categories.length],
+            ['Video Reels', videos.length],
+          ].map(([label, count]) => (
+            <div key={label} className="rounded border border-sage-light bg-earth-dark/30 p-3 text-center">
+              <span className="font-serif text-xl font-bold text-forest block">{count}</span>
+              <span className="font-mono text-[9px] uppercase tracking-wider text-sage font-bold">{label}</span>
+            </div>
+          ))}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
           

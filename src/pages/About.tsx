@@ -1,8 +1,9 @@
-import { mockAuthors } from '../data/mockData';
+import { useContent } from '../data/content';
 import SectionHeader from '../components/SectionHeader';
 import { Eye, ShieldCheck, Heart, Award, ArrowUpRight, CheckCircle } from 'lucide-react';
 
 export default function About() {
+  const { authors } = useContent();
   return (
     <div className="space-y-16 animate-in fade-in duration-500 max-w-5xl mx-auto" id="about-view">
       
@@ -94,7 +95,7 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {mockAuthors.map((author) => (
+          {authors.map((author) => (
             <div 
               key={author.id}
               className="bg-white border border-forest/15 rounded-lg p-6 flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-xs"

@@ -1,5 +1,4 @@
-import { Article } from '../types';
-import { mockArticles, mockAuthors } from '../data/mockData';
+import { useContent } from '../data/content';
 import ArticleCard from '../components/ArticleCard';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { 
@@ -15,6 +14,7 @@ interface SingleArticleProps {
 }
 
 export default function SingleArticle({ articleId, onBack, onSelectArticle }: SingleArticleProps) {
+  const { articles, authors } = useContent();
   const [copied, setCopied] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [likes, setLikes] = useState(128);
@@ -33,18 +33,18 @@ export default function SingleArticle({ articleId, onBack, onSelectArticle }: Si
   }, []);
 
   const article = useMemo(() => {
-    return mockArticles.find((a) => a.id === articleId) || mockArticles[0];
-  }, [articleId]);
+    return articles.find((a) => a.id === articleId) || articles[0];
+  }, [articleId, articles]);
 
   const author = useMemo(() => {
-    return mockAuthors.find((a) => a.id === article.authorId) || mockAuthors[0];
-  }, [article.authorId]);
+    return authors.find((a) => a.id === article.authorId) || authors[0];
+  }, [article.authorId, authors]);
 
   const relatedArticles = useMemo(() => {
-    return mockArticles
+    return articles
       .filter((a) => a.id !== article.id && (a.category === article.category || a.featured))
       .slice(0, 3);
-  }, [article.id, article.category]);
+  }, [article.id, article.category, articles]);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);

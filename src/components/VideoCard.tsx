@@ -97,7 +97,6 @@ export default function VideoCard({ video }: VideoCardProps) {
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleVideoEnded}
           onError={handleVideoError}
-          referrerPolicy="no-referrer"
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-10 ${
             isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}

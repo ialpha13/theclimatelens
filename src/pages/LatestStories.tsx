@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Article } from '../types';
-import { mockArticles, mockCategories } from '../data/mockData';
+import { useContent } from '../data/content';
 import ArticleCard from '../components/ArticleCard';
 import SectionHeader from '../components/SectionHeader';
 import { Grid, List, Search, SlidersHorizontal, BookOpen } from 'lucide-react';
@@ -10,14 +9,15 @@ interface LatestStoriesProps {
 }
 
 export default function LatestStories({ onSelectArticle }: LatestStoriesProps) {
+  const { articles, categories } = useContent();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Categories list starting with 'All'
-  const categoriesList = ['All', ...mockCategories.map((c) => c.title)];
+  const categoriesList = ['All', ...categories.map((c) => c.title)];
 
-  const filteredArticles = mockArticles.filter((article) => {
+  const filteredArticles = articles.filter((article) => {
     const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
     const matchesSearch = 
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

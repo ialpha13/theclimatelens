@@ -1,9 +1,10 @@
-import { mockVideos } from '../data/mockData';
+import { useContent } from '../data/content';
 import VideoCard from '../components/VideoCard';
 import SectionHeader from '../components/SectionHeader';
 import { Eye, ShieldCheck, Heart, Radio, Sparkles } from 'lucide-react';
 
 export default function Videos() {
+  const { videos } = useContent();
   return (
     <div className="space-y-12 animate-in fade-in duration-500" id="videos-view">
       
@@ -47,12 +48,12 @@ export default function Videos() {
             <Sparkles className="h-4 w-4 text-gold" />
             <span className="font-mono text-[10px] uppercase font-bold text-sage">Active Briefing Streams</span>
           </div>
-          <span className="text-xs text-sage font-mono font-bold bg-[#efece6] px-2 py-0.5 rounded-full">{mockVideos.length} reels</span>
+          <span className="text-xs text-sage font-mono font-bold bg-[#efece6] px-2 py-0.5 rounded-full">{videos.length} reels</span>
         </div>
 
         {/* Dense centered grid designed for portrait aspect radios */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center" id="videos-grid-container">
-          {mockVideos.map((video) => (
+          {videos.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}
         </div>

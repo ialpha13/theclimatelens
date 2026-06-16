@@ -1,6 +1,7 @@
 import { useState, useTransition } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { ContentProvider } from './data/content';
 
 // Pages
 import Home from './pages/Home';
@@ -72,6 +73,7 @@ export default function App() {
   };
 
   return (
+    <ContentProvider>
     <div className="flex flex-col min-h-screen bg-[#f9f6f0] text-[#151515] selection:bg-sage/20 selection:text-forest" id="editorial-main-wrapper">
       
       {/* Editorial Announcement Subheader Top Bar */}
@@ -130,5 +132,6 @@ export default function App() {
       <Footer onTabChange={handleTabChange} />
 
     </div>
+    </ContentProvider>
   );
 }

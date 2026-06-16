@@ -1,6 +1,6 @@
 import React from 'react';
-import { Article, Author } from '../types';
-import { mockAuthors } from '../data/mockData';
+import { Article } from '../types';
+import { useContent } from '../data/content';
 import { Clock, Calendar, ArrowUpRight, ShieldAlert } from 'lucide-react';
 
 interface ArticleCardProps {
@@ -11,7 +11,8 @@ interface ArticleCardProps {
 }
 
 export default function ArticleCard({ article, onSelect, layout = 'grid' }: ArticleCardProps) {
-  const author = mockAuthors.find((a) => a.id === article.authorId) || mockAuthors[0];
+  const { authors } = useContent();
+  const author = authors.find((a) => a.id === article.authorId) || authors[0];
 
   // Helper to assign colors to specific journalistic categories of our platform
   const getCategoryTheme = (cat: string) => {
