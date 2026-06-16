@@ -226,11 +226,27 @@
     `;
     const toggle = header.querySelector(".mobile-menu-toggle");
     const mobileNav = header.querySelector(".mobile-nav");
+    const mobileLinks = header.querySelectorAll(".mobile-nav a");
+    const desktopLinks = header.querySelectorAll(".desktop-nav a");
+    const closeMenu = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      mobileNav.hidden = true;
+      document.body.classList.remove("menu-open");
+    };
+
     toggle.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!isOpen));
       mobileNav.hidden = isOpen;
       document.body.classList.toggle("menu-open", !isOpen);
+    });
+
+    [...mobileLinks, ...desktopLinks].forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) closeMenu();
     });
   }
 
