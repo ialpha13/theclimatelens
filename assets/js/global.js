@@ -1,13 +1,4 @@
 (function () {
-  const navItems = [
-    ["home", "Home", "index.html"],
-    ["latest", "Latest Stories", "latest-stories.html"],
-    ["investigations", "Investigations", "investigations.html"],
-    ["explained", "Climate Explained", "climate-explained.html"],
-    ["videos", "Videos", "videos.html"],
-    ["about", "About", "about.html"]
-  ];
-
   function escapeHtml(value) {
     return String(value || "")
       .replace(/&/g, "&amp;")
@@ -202,120 +193,10 @@
     });
   }
 
-  function renderHeader() {
-    const current = document.body.dataset.page || "home";
-    const header = document.querySelector("#site-header");
-    if (!header) return;
-    header.innerHTML = `
-      <div class="container nav-inner">
-        <a class="brand-logo" href="index.html" aria-label="The Climate Lens home">
-          <img src="assets/images/theclimatelenslogo2.png" alt="The Climate Lens">
-        </a>
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          ${navItems.map(([id, label, href]) => `<a href="${href}" class="${current === id ? "active" : ""}">${label}</a>`).join("")}
-        </nav>
-        <a class="nav-cta" href="contact.html">Contact</a>
-        <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <nav class="mobile-nav container" aria-label="Mobile navigation" hidden>
-        ${navItems.map(([id, label, href]) => `<a href="${href}" class="${current === id ? "active" : ""}">${label}</a>`).join("")}
-        <a href="contact.html" class="${current === "contact" ? "active" : ""}">Send a Tip / Contact</a>
-      </nav>
-    `;
-    const toggle = header.querySelector(".mobile-menu-toggle");
-    const mobileNav = header.querySelector(".mobile-nav");
-    const mobileLinks = header.querySelectorAll(".mobile-nav a");
-    const desktopLinks = header.querySelectorAll(".desktop-nav a");
-    const closeMenu = () => {
-      toggle.setAttribute("aria-expanded", "false");
-      mobileNav.hidden = true;
-      document.body.classList.remove("menu-open");
-    };
-
-    toggle.addEventListener("click", () => {
-      const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!isOpen));
-      mobileNav.hidden = isOpen;
-      document.body.classList.toggle("menu-open", !isOpen);
-    });
-
-    [...mobileLinks, ...desktopLinks].forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) closeMenu();
-    });
-  }
-
-  function renderAnnouncement() {
-    const bar = document.querySelector("#announcement-bar");
-    if (!bar) return;
-    bar.innerHTML = `
-      <span class="pulse-dot" aria-hidden="true"></span>
-      <strong>June 2026 Audit Report:</strong>
-      <span>Ghost Forests &amp; Corporate Carbon Offsets Scandal Deployed.</span>
-      <a href="article.html?slug=investigation-greenwashing-credits">Read Audit</a>
-    `;
-  }
-
-  function renderFooter() {
-    const footer = document.querySelector("#site-footer");
-    if (!footer) return;
-    footer.innerHTML = `
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-about">
-            <a class="footer-logo" href="index.html"><img src="assets/images/theclimatelenslogo2.png" alt="The Climate Lens"></a>
-            <p>An independent, global investigative journalism initiative. We monitor ecological shifts, tell evidence-based stories, and break down complex atmospheric systems to make changing climate developments transparent, accessible, and actionable.</p>
-            <div class="footer-live">Watching Earth Through Nature's Lens</div>
-          </div>
-          <div class="footer-col">
-            <h3>Editorial Sections</h3>
-            <ul>
-              <li><a href="latest-stories.html">News &amp; Latest Stories</a></li>
-              <li><a href="investigations.html">Long-Form Investigations</a></li>
-              <li><a href="climate-explained.html">Climate Explained</a></li>
-              <li><a href="videos.html">Reels &amp; Videos</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h3>Platform Info</h3>
-            <ul>
-              <li><a href="about.html">Our Mission</a></li>
-              <li><a href="contact.html">Inquiries &amp; Tips</a></li>
-              <li><a href="index.html">Home Feed</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h3>Tip Line &amp; Contacts</h3>
-            <p>Secure Tip Line:</p>
-            <a href="mailto:tips@climatelens.org">tips@climatelens.org</a>
-            <p>Available 24/7 for researchers, scientists &amp; whistleblowers.</p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>Copyright ${new Date().getFullYear()} The Climate Lens. Independent Journalism.</span>
-          <button class="back-to-top" type="button">Back to Top</button>
-        </div>
-        <div class="footer-notice">Evidence-Based Climate Stories Delivered Without Compromise.</div>
-      </div>
-    `;
-    footer.querySelector(".back-to-top").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  }
-
   function setupGlobalInteractions() {
-    window.addEventListener("scroll", () => {
-      document.querySelector("#site-header")?.classList.toggle("scrolled", window.scrollY > 8);
-    }, { passive: true });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    renderAnnouncement();
-    renderHeader();
-    renderFooter();
     setupGlobalInteractions();
   });
 
