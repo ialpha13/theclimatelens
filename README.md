@@ -1,6 +1,6 @@
 # The Climate Lens
 
-Static HTML, CSS, and JavaScript version of The Climate Lens. The existing editorial design is preserved while Sanity CMS becomes the content source for articles, investigations, explainers, authors, categories, featured stories, and videos/reels.
+Static HTML, CSS, and JavaScript version of The Climate Lens. The existing editorial design is preserved while Sanity CMS becomes the content source for articles, news, explainers, authors, categories, featured stories, and videos/reels.
 
 No PHP, React, Next.js, Laravel, WordPress, MySQL, or backend framework is required for the public site.
 
@@ -44,7 +44,7 @@ The frontend uses Sanity's public CDN/API for read-only published content. Do no
 ## Content Workflow
 
 1. Log into Sanity Studio.
-2. Create or edit an article, investigation, blog, climate explained post, author, category, or video/reel.
+2. Create or edit an article, news story, blog, climate explained post, author, category, or video/reel.
 3. Upload images or thumbnails in Sanity.
 4. For videos, add an external video URL from YouTube, Vimeo, Cloudinary, Mux, Bunny.net, or another video platform.
 5. Click Publish.

@@ -14,9 +14,9 @@
     const bar = document.querySelector("#announcement-bar");
     bar.innerHTML = `
       <span class="pulse-dot" aria-hidden="true"></span>
-      <strong>June 2026 Audit Report:</strong>
-      <span>Ghost Forests &amp; Corporate Carbon Offsets Scandal Deployed.</span>
-      <a href="article.html?slug=investigation-greenwashing-credits">Read Audit</a>
+      <strong>June 2026 Top Story:</strong>
+      <span>Wildfire smoke and public health remain at the center of this week's coverage.</span>
+      <a href="article.html?slug=wildfire-smoke-public-health">Read Story</a>
     `;
 
     const current = document.body.dataset.page || "home";
@@ -36,7 +36,7 @@
       </div>
       <nav class="mobile-nav container" aria-label="Mobile navigation" hidden>
         ${navItems().map(([id, label, href]) => `<a href="${href}" class="${current === id ? "active" : ""}">${label}</a>`).join("")}
-        <a href="contact.html" class="${current === "contact" ? "active" : ""}">Send a Tip / Contact</a>
+        <a href="contact.html" class="${current === "contact" ? "active" : ""}">Contact</a>
       </nav>
     `;
 
@@ -68,7 +68,7 @@
     return [
       ["home", "Home", "index.html"],
       ["latest", "Latest Stories", "latest-stories.html"],
-      ["investigations", "Investigations", "investigations.html"],
+      ["investigations", "News", "investigations.html"],
       ["explained", "Climate Explained", "climate-explained.html"],
       ["videos", "Videos", "videos.html"],
       ["about", "About", "about.html"]

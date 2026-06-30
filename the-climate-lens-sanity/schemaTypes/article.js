@@ -11,7 +11,7 @@ export default {
       title: 'Type',
       type: 'string',
       options: {
-        list: ['News', 'Blog', 'Investigation', 'Climate Explained', 'Opinion'],
+        list: ['News', 'Blog', 'Climate Explained', 'Opinion'],
         layout: 'radio',
       },
       validation: (Rule) => Rule.required(),

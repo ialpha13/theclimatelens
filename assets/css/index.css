@@ -1,24 +1,32 @@
 .hero-banner {
-  position: relative;
+  padding: 2.5rem 0 1.5rem;
+}
+
+.editorial-hero {
   display: grid;
-  min-height: 35rem;
-  place-items: center;
-  overflow: hidden;
-  background: var(--forest) url("../images/homehero.png") center / cover no-repeat fixed;
-  color: var(--earth-beige);
+  grid-template-columns: minmax(0, 2.15fr) minmax(14rem, 0.95fr) minmax(14rem, 0.95fr);
+  gap: 2rem;
+  align-items: start;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+.hero-lead-story {
+  display: grid;
+  gap: 1.4rem;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 48rem;
-  text-align: center;
+.hero-lead-copy {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hero-section-label,
+.hero-column-heading {
+  color: #5f635c;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
 }
 
 .hero-kicker {
@@ -35,32 +43,107 @@
   text-transform: uppercase;
 }
 
-.hero-content h1 {
-  margin: 1.5rem 0;
-  color: white;
-  font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 8vw, 5rem);
-  line-height: 1.05;
+.hero-column-heading {
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.14);
 }
 
-.hero-content h1 span {
-  color: var(--gold);
-}
-
-.hero-content p {
+.hero-lead-copy h1 {
   max-width: 42rem;
-  margin: 0 auto;
-  color: #cac4b7;
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
-  line-height: 1.75;
+  margin: 0;
+  color: #37352f;
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+.hero-author-line {
+  color: #494942;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.hero-lead-image {
+  display: block;
+  overflow: hidden;
+  background: #e5e2d7;
+}
+
+.hero-lead-image img {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+.hero-latest-column,
+.hero-featured-column {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero-brief-item {
+  display: grid;
+  gap: 0.45rem;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+}
+
+.hero-brief-item h2,
+.hero-feature-copy h2 {
+  margin: 0;
+  color: #2f2f2b;
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.2;
+}
+
+.hero-brief-item p {
+  margin: 0;
+  color: #65675f;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.hero-feature-card {
+  display: grid;
+  gap: 0.65rem;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+}
+
+.hero-feature-thumb {
+  display: block;
+  overflow: hidden;
+  background: #ece8dc;
+}
+
+.hero-feature-thumb img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.hero-feature-copy {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.hero-feature-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #4b4c45;
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+.hero-feature-author img {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  object-fit: cover;
 }
 
 .featured-story {
@@ -111,9 +194,9 @@
   position: absolute;
   top: 0.85rem;
   left: 0.85rem;
-  border: 1px solid #7f1d1d;
+  border: 1px solid #245c48;
   border-radius: 0.25rem;
-  background: var(--danger);
+  background: #173b2d;
   color: white;
   padding: 0.3rem 0.65rem;
   font-family: var(--font-mono);
@@ -423,6 +506,22 @@
   font-size: 1.5rem;
 }
 
+@media (max-width: 1100px) {
+  .editorial-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .hero-latest-column,
+  .hero-featured-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-column-heading {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 900px) {
   .featured-story,
   .home-latest-layout,
@@ -449,8 +548,16 @@
 
 @media (max-width: 768px) {
   .hero-banner {
-    min-height: 32rem;
-    background-attachment: scroll;
+    padding-top: 1.5rem;
+  }
+
+  .hero-lead-copy h1 {
+    font-size: clamp(2.15rem, 10vw, 3.1rem);
+  }
+
+  .hero-latest-column,
+  .hero-featured-column {
+    grid-template-columns: 1fr;
   }
 
   .featured-copy {

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const ui = window.ClimateLensUI;
-  ui.renderStatus("#featured-story-slot", "loading", "Loading featured report...");
+  ui.renderStatus("#home-hero-editorial", "loading", "Loading top stories...");
+  ui.renderStatus("#featured-story-slot", "loading", "Loading featured story...");
 
   try {
     const [articles, featured, videos, authors, categories] = await Promise.all([
@@ -14,6 +15,68 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderAtmosphericMonitor();
 
     const lead = featured[0] || articles[0];
+    const heroSlot = document.querySelector("#home-hero-editorial");
+    if (heroSlot && lead) {
+      const leadAuthor = ui.findAuthor(authors, lead) || {};
+      const heroLatest = articles.filter((article) => article.slug !== lead.slug).slice(0, 4);
+      const heroFeatured = featured.filter((article) => article.slug !== lead.slug).slice(0, 3);
+      heroSlot.innerHTML = `
+        <div class="editorial-hero">
+          <article class="hero-lead-story">
+            <div class="hero-lead-copy">
+              <span class="hero-section-label">Top Story</span>
+              <a href="${ui.articleUrl(lead)}"><h1>${ui.escapeHtml(lead.title)}</h1></a>
+              <div class="hero-author-line">${ui.escapeHtml(leadAuthor.name || "Climate Lens")} ${lead.readingTime ? `, ${ui.escapeHtml(lead.readingTime)}` : ""}</div>
+            </div>
+            <a class="hero-lead-image" href="${ui.articleUrl(lead)}">
+              <img src="${ui.escapeHtml(lead.featuredImage)}" alt="${ui.escapeHtml(lead.title)}" referrerpolicy="no-referrer">
+            </a>
+          </article>
+
+          <aside class="hero-latest-column">
+            <div class="hero-column-heading">Latest</div>
+            ${heroLatest.map((article) => {
+              const author = ui.findAuthor(authors, article) || {};
+              return `
+                <article class="hero-brief-item">
+                  <a href="${ui.articleUrl(article)}"><h2>${ui.escapeHtml(article.title)}</h2></a>
+                  <p>${ui.escapeHtml(author.name || "Climate Lens")}</p>
+                </article>
+              `;
+            }).join("")}
+          </aside>
+
+          <aside class="hero-featured-column">
+            <div class="hero-column-heading">Featured</div>
+            ${heroFeatured.map((article) => {
+              const author = ui.findAuthor(authors, article) || {};
+              return `
+                <article class="hero-feature-card">
+                  <a class="hero-feature-thumb" href="${ui.articleUrl(article)}">
+                    <img src="${ui.escapeHtml(article.featuredImage)}" alt="${ui.escapeHtml(article.title)}" loading="lazy" referrerpolicy="no-referrer">
+                  </a>
+                  <div class="hero-feature-copy">
+                    <a href="${ui.articleUrl(article)}"><h2>${ui.escapeHtml(article.title)}</h2></a>
+                    <div class="hero-feature-author">
+                      <img src="${ui.escapeHtml(author.image || "")}" alt="${ui.escapeHtml(author.name || "Climate Lens")}" loading="lazy" referrerpolicy="no-referrer">
+                      <span>${ui.escapeHtml(author.name || "Climate Lens")}</span>
+                    </div>
+                  </div>
+                </article>
+              `;
+            }).join("")}
+          </aside>
+        </div>
+      `;
+    } else if (heroSlot) {
+      heroSlot.innerHTML = `
+        <div class="featured-story-empty">
+          <h3>No top stories available right now.</h3>
+          <p>Once stories are published in Sanity, the editorial hero will update automatically.</p>
+        </div>
+      `;
+    }
+
     const featuredSlot = document.querySelector("#featured-story-slot");
     if (featuredSlot && lead) {
       const leadAuthor = ui.findAuthor(authors, lead) || {};
@@ -21,14 +84,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         <article class="featured-story">
           <a class="feature-image" href="${ui.articleUrl(lead)}">
             <img src="${ui.escapeHtml(lead.featuredImage)}" alt="${ui.escapeHtml(lead.title)}" referrerpolicy="no-referrer">
-            <span class="feature-badge">Featured Report</span>
+            <span class="feature-badge">Featured Story</span>
           </a>
           <div class="featured-copy">
             <div class="featured-body">
               <a href="${ui.articleUrl(lead)}"><h3>${ui.escapeHtml(lead.title)}</h3></a>
-              <span class="featured-eyebrow">Lead Investigation</span>
+              <span class="featured-eyebrow">Lead Story</span>
               <div class="meta-row">
-                <span class="category-pill${lead.type === "Investigation" ? " investigation" : ""}">${ui.escapeHtml(lead.category)}</span>
+                <span class="category-pill${lead.type === "News" ? " news" : ""}">${ui.escapeHtml(lead.category)}</span>
                 <span>${ui.escapeHtml(ui.formatDate(lead.publishedAt))}</span>
                 <span>${ui.escapeHtml(lead.readingTime || "")}</span>
               </div>
@@ -39,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <img src="${ui.escapeHtml(leadAuthor.image || "")}" alt="${ui.escapeHtml(leadAuthor.name || "Climate Lens")}" referrerpolicy="no-referrer">
                 <span><strong>${ui.escapeHtml(leadAuthor.name || "Climate Lens")}</strong><br>${ui.escapeHtml(leadAuthor.role || "Editorial Team")}</span>
               </span>
-              <a class="btn btn-forest" href="${ui.articleUrl(lead)}">Read Investigation</a>
+              <a class="btn btn-forest" href="${ui.articleUrl(lead)}">Read Story</a>
             </div>
           </div>
         </article>
@@ -47,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else if (featuredSlot) {
       featuredSlot.innerHTML = `
         <div class="featured-story-empty">
-          <h3>No featured report available right now.</h3>
+          <h3>No featured story available right now.</h3>
           <p>Once a featured article is published in Sanity, it will appear here automatically.</p>
         </div>
       `;
@@ -78,7 +141,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ui.setupVideoCards(document);
   } catch (error) {
-    ui.renderStatus("#featured-story-slot", "error", "Featured report could not load.");
+    ui.renderStatus("#home-hero-editorial", "error", "Top stories could not load.");
+    ui.renderStatus("#featured-story-slot", "error", "Featured story could not load.");
   }
 });
 

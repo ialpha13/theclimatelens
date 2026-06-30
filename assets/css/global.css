@@ -378,10 +378,10 @@ button {
   text-transform: uppercase;
 }
 
-.category-pill.investigation {
-  border-color: rgba(127, 29, 29, 0.4);
-  background: rgba(69, 10, 10, 0.12);
-  color: #b91c1c;
+.category-pill.news {
+  border-color: rgba(23, 59, 45, 0.32);
+  background: rgba(23, 59, 45, 0.08);
+  color: #173b2d;
 }
 
 .category-pill.explained {

@@ -25,7 +25,7 @@
 
   function categoryClass(category, type) {
     const value = `${category || ""} ${type || ""}`.toLowerCase();
-    if (value.includes("investigation")) return " investigation";
+    if (value.includes("news")) return " news";
     if (value.includes("explained")) return " explained";
     return "";
   }
@@ -37,7 +37,7 @@
       <article class="article-card${cardLayout}">
         <a class="article-media" href="${articleUrl(article)}" aria-label="${escapeHtml(article.title)}">
           <img src="${escapeHtml(article.featuredImage)}" alt="${escapeHtml(article.title)}" loading="lazy" referrerpolicy="no-referrer">
-          ${article.type === "Investigation" ? '<span class="feature-badge">Investigation</span>' : ""}
+          ${article.type === "News" ? '<span class="feature-badge">News</span>' : ""}
         </a>
         <div class="card-content">
           <div>
@@ -67,7 +67,7 @@
         <video src="${escapeHtml(video.videoUrl)}" poster="${escapeHtml(video.thumbnail)}" muted loop playsinline></video>
         <div class="video-overlay">
           <div>
-            <span class="category-pill investigation">${escapeHtml(video.category)}</span>
+            <span class="category-pill news">${escapeHtml(video.category)}</span>
           </div>
           <button class="play-button" type="button" aria-label="Play ${escapeHtml(video.title)}">Play</button>
           <div>

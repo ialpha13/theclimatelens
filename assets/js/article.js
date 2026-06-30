@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
       <header class="article-head">
         <div class="meta-row">
-          <span class="category-pill${article.type === "Investigation" ? " investigation" : ""}">${ui.escapeHtml(article.category)}</span>
+          <span class="category-pill${article.type === "News" ? " news" : ""}">${ui.escapeHtml(article.category)}</span>
           <span>${ui.escapeHtml(ui.formatDate(article.publishedAt))}</span>
           <span>${ui.escapeHtml(article.readingTime)}</span>
         </div>
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </aside>
       </div>
       <section class="related-section">
-        <h2>Related Investigations</h2>
+        <h2>Related Stories</h2>
         <div class="article-grid">${related.map((item) => ui.renderArticleCard(item, authors)).join("")}</div>
       </section>
     `;

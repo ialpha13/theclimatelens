@@ -15,14 +15,14 @@
         <div class="footer-grid">
           <div class="footer-about">
             <a class="footer-logo" href="index.html"><img src="assets/images/theclimatelenslogo2.png" alt="The Climate Lens"></a>
-            <p>An independent, global investigative journalism initiative. We monitor ecological shifts, tell evidence-based stories, and break down complex atmospheric systems to make changing climate developments transparent, accessible, and actionable.</p>
+            <p>An independent climate newsroom. We monitor ecological shifts, publish evidence-based news, and break down complex atmospheric systems to make changing climate developments transparent, accessible, and actionable.</p>
             <div class="footer-live">Watching Earth Through Nature's Lens</div>
           </div>
           <div class="footer-col">
             <h3>Editorial Sections</h3>
             <ul>
               <li><a href="latest-stories.html">News &amp; Latest Stories</a></li>
-              <li><a href="investigations.html">Long-Form Investigations</a></li>
+              <li><a href="investigations.html">News Desk</a></li>
               <li><a href="climate-explained.html">Climate Explained</a></li>
               <li><a href="videos.html">Reels &amp; Videos</a></li>
             </ul>
